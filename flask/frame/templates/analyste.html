@@ -1,0 +1,50 @@
+{% extends 'layout.html' %}
+{% block content %}		
+<div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Liste des analystes</h4>
+																																	<div class="ml-auto">
+							<div class="btn-group">
+								<a href='/view_addanalyste'><button type="button" class="btn btn-primary">Creation</button></a>
+							</div>
+						</div>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table id="example3" class="display min-w850">
+                                       			<thead>
+										  <tr>
+                                       
+                                          <th>diplome</th>
+                                          <th>specialite</th>
+                                          
+                                           <th>mission</th>
+                                         
+                                          <th width='15%'>Action</th>
+                              </tr>
+									</thead>
+									<tbody>
+			{% for  analyste in analystes : %}
+                                        <tr>
+ <td>{{ analyste['diplome'] }}</td>
+ <td>{{ analyste['specialite'] }}</td>
+
+	<td>{{ analyste['mission'] }}</td>
+
+                                    
+                                          <td> 
+                                              <div class="button-list">
+        <a href="/view_editanalyste?id={{ analyste['id'] }}" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fas fa-pencil-alt"></i></a>
+      <a href="/analyste/delete/{{ analyste['id'] }}" onClick="confirm('Voulez-vous sur supprimer cette analystes?')" class="btn btn-danger shadow btn-xs sharp"><i class="fas fa-trash"></i></a>
+                                                 
+                                          </td>
+                                        </tr>
+            {% endfor %}
+									</tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endblock %}

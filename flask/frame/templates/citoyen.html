@@ -1,0 +1,57 @@
+{% extends 'layout.html' %}
+{% block content %}		
+<div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">Liste des Citoyens</h4>
+																																	<!-- <div class="ml-auto">
+							<div class="btn-group">
+								<a href='/view_addrec'><button type="button" class="btn btn-primary">Creation</button></a>
+							</div>
+						</div> -->
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table id="example3" class="display min-w850">
+                                       			<thead>
+										 		  <tr>
+                                       
+                                          <th>nom</th>
+                                          <th>prenom</th>
+                                          <th>nom pere</th>
+                                          <th>nom mere </th>
+										  <th>date naissance</th>
+										  <th>adresse naissance</th>
+										  <th>sexe</th>
+										  <th>remarque</th>
+										 
+                                          <th width='15%'>Action</th>
+                              </tr>
+									</thead>
+									<tbody>
+				{% for  citoyen in citoyens : %}
+                                        <tr>
+ <td>{{ citoyen['nom'] }}</td>
+ <td>{{ citoyen['prenom'] }}</td>
+ <td>{{ citoyen['nom_pere'] }}</td>
+ <td>{{ citoyen['nom_mere'] }}</td>  
+ <td>{{ citoyen['date_naissance'] }}</td> 
+ <td>{{ citoyen['adress_naissance'] }}</td>     
+ <td>{{ citoyen['sexe'] }}</td>         
+ <td>{{ citoyen['remarque'] }}</td> 
+                                    
+                                          <td> 
+                                              <div class="button-list">
+        <a href="/view_editcitoyen?id={{ citoyen['id'] }}" class="btn btn-primary shadow btn-xs sharp me-1"><i class="fas fa-pencil-alt"></i></a>
+      <a href="/citoyen/delete/{{ citoyen['id'] }}" onClick="confirm('Voulez-vous sur supprimer cette recommandation?')" class="btn btn-danger shadow btn-xs sharp"><i class="fas fa-trash"></i></a>
+                                                 
+                                          </td>
+                                        </tr>
+            {% endfor %}
+									</tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endblock %}

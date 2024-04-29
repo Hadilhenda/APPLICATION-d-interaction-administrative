@@ -1,0 +1,94 @@
+{% extends 'layout.html' %} {% block content %}
+<div class="page-wrapper">
+  <div class="page-content-wrapper">
+    <div class="page-content">
+      <div class="page-breadcrumb d-none d-md-flex align-items-center mb-3">
+        <div class="breadcrumb-title pr-3">Recommandation</div>
+      </div>
+      <div class="card radius-15">
+        <div class="card-body">
+          <div class="card-title">
+            <h4 class="mb-0">Modifier recommandation</h4>
+          </div>
+          <hr />
+          <form
+            class="form-validate"
+            method="post"
+            enctype="multipart/form-data"
+            action="/save_editrec"
+          >
+            <input type='hidden' name='id' value='{{ recommandation['id'] }}'>
+            <div class="form-group row">
+              <label class="col-md-3 label-control" for="userinput1"
+                >Titre:
+              </label>
+              <div class="col-md-9">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="titre"
+                  value="{{ recommandation['titre'] }}"
+                  placeholder="Entrer les details "
+                  required
+                />
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-3 label-control" for="userinput1"
+                >domaine:
+              </label>
+              <div class="col-md-9">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="domaine"
+                  value="{{ recommandation['domaine'] }}"
+                  placeholder="Entrer les details "
+                  required
+                />
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-3 label-control" for="userinput1"
+                >specification:
+              </label>
+              <div class="col-md-9">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="spec"
+                  value="{{ recommandation['specification'] }}"
+                  placeholder="Entrer les details "
+                  required
+                />
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-md-3 label-control" for="userinput1"
+                >description:
+              </label>
+              <div class="col-md-9">
+                <input
+                  type="text"
+                  class="form-control"
+                  name="desc"
+                  value="{{ recommandation['description'] }}"
+                  placeholder="Entrer les details "
+                  required
+                />
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-lg-3 col-form-label"></label>
+              <div class="col-lg-8">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

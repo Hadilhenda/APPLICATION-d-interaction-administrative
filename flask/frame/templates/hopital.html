@@ -1,0 +1,99 @@
+{% extends 'layout.html' %} {% block content %}
+<div class="page-wrapper">
+  <!--page-content-wrapper-->
+  <div class="page-content-wrapper">
+    <div class="page-content">
+      <!--breadcrumb-->
+      <div class="page-breadcrumb d-none d-md-flex align-items-center mb-3">
+        <div class="breadcrumb-title pr-3">gouvernorats</div>
+        <div class="pl-3">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0 p-0">
+              <li class="breadcrumb-item">
+                <a href="javascript:;"><i class="bx bx-home-alt"></i></a>
+              </li>
+              <li class="breadcrumb-item active" aria-current="page">
+                liste des gouvernorats
+              </li>
+            </ol>
+          </nav>
+        </div>
+        <div class="ml-auto">
+          <div class="btn-group">
+            <a href="/view_addhopital"
+              ><button type="button" class="btn btn-primary">
+                Creation
+              </button></a
+            >
+          </div>
+        </div>
+      </div>
+      <!--end breadcrumb-->
+      <div class="card">
+        <div class="card-body">
+          <div class="card-title">
+            <h4 class="mb-0">DataTable</h4>
+          </div>
+          <hr />
+          <div class="table-responsive">
+            <table
+              id="example2"
+              class="table table-striped table-bordered"
+              style="width: 100%"
+            >
+              <thead>
+                <tr>
+                  <th>tel</th>
+                  <th>email</th>
+                  <th width="15%">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for hopital in hopitaux : %}
+                <tr>
+                  <td>{{ hopital['tel'] }}</td>
+                  <td>{{ hopital['email'] }}</td>
+
+                  <td>
+                    <div class="button-list">
+                      <a
+                        href="/view_edithopital?id={{ hopital['id'] }}"
+                        class=""
+                      >
+                        <i class="fa fa-edit" style="font-size: 30px"></i
+                      ></a>
+                      <a
+                        href="/hopital/delete/{{ hopital['id'] }}"
+                        onClick="confirm('Voulez-vous sur supprimer cette hopitals?')"
+                        class=""
+                        ><i
+                          class="fa fa-trash-o"
+                          style="font-size: 30px; color: red"
+                        ></i
+                      ></a>
+                      <a href="/Validerhopital?id={{ hopital['id'] }}" class="">
+                        <i
+                          class="fa fa-check"
+                          style="font-size: 36px; color: green"
+                        ></i
+                      ></a>
+                      <a href="/Refuserhopital?id={{ hopital['id'] }}" class="">
+                        <i
+                          class="fa fa-ban"
+                          aria-hidden="true"
+                          style="font-size: 36px; color: red"
+                        ></i
+                      ></a>
+                    </div>
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
